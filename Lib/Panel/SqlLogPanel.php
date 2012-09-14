@@ -39,7 +39,7 @@ class SqlLogPanel extends DebugPanel {
 		foreach ($dbConfigs as $configName) {
 			$driver = null;
 			$db = ConnectionManager::getDataSource($configName);
-			$log = $db->getLog();
+			$log = $db->getLog(false, false);
 			$queriesCount += $log['count'];
 			$queriesTime += $log['time'];
 			if (
