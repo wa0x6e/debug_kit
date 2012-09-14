@@ -79,6 +79,9 @@ class HtmlToolbarHelper extends ToolbarHelper {
 			if ($value instanceof Closure) {
 				$value = 'function';
 			}
+			if (is_object($value)) {
+				$value = Set::reverse($value, true);
+			}
 
 			if (is_array($value) && !empty($value)) {
 				$out .= $this->makeNeatArray($value, $openDepth, $nextDepth, $doubleEncode);
@@ -107,7 +110,7 @@ class HtmlToolbarHelper extends ToolbarHelper {
  * @return void
  **/
 	public function panelStart($title, $anchor) {
-		$link = $this->Html->link($title, '#' . $anchor);
+		$link = $this->Html->link($title, '#' . $anchor, array('escape' => false));
 		return $link;
 	}
 /**
@@ -171,7 +174,7 @@ class HtmlToolbarHelper extends ToolbarHelper {
 		foreach (Router::prefixes() as $prefix) {
 			$url[$prefix] = false;
 		}
-		$this->explainLinkUid = (isset($this->explainLinkUid) ? $this->explainLinkUid + 1 : 0); 
+		$this->explainLinkUid = (isset($this->explainLinkUid) ? $this->explainLinkUid + 1 : 0);
 		$uid = $this->explainLinkUid . '_' . rand(0, 10000);
 		$form = $this->Form->create('log', array('url' => $url, 'id' => "logForm{$uid}"));
 		$form .= $this->Form->hidden('log.ds', array('id' => "logDs{$uid}", 'value' => $connection));

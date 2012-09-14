@@ -61,12 +61,14 @@ class ToolbarComponent extends Component implements CakeEventListener {
 		'DebugKit.History',
 		'DebugKit.Session',
 		'DebugKit.Request',
-		'DebugKit.SqlLog',
-		'DebugKit.Timer',
+
 		'DebugKit.Log',
-		'DebugKit.Variables',
+
 		'DebugKit.Environment',
-		'DebugKit.Include'
+		'DebugKit.Include',
+		'DebugKit.Timer',
+		'DebugKit.Variables',
+		'DebugKit.SqlLog'
 	);
 
 /**
@@ -82,8 +84,8 @@ class ToolbarComponent extends Component implements CakeEventListener {
  * @var array
  */
 	public $javascript = array(
-		'jquery' => '/debug_kit/js/jquery',
-		'libs' => '/debug_kit/js/js_debug_toolbar'
+		//'jquery' => '/debug_kit/js/jquery',
+		//'libs' => '/debug_kit/js/js_debug_toolbar'
 	);
 
 /**
@@ -391,6 +393,7 @@ class ToolbarComponent extends Component implements CakeEventListener {
 			$vars[$panelName]['plugin'] = $panel->plugin;
 			$vars[$panelName]['title'] = $panel->title;
 			$vars[$panelName]['disableTimer'] = true;
+			$vars[$panelName]['priority'] = $panel->priority;;
 		}
 		return $vars;
 	}

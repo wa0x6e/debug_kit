@@ -32,10 +32,14 @@
 			</li>
 		<?php foreach ($debugToolbarPanels as $panelName => $panelInfo): ?>
 			<?php $panelUnderscore = Inflector::underscore($panelName);?>
-			<li class="panel-tab">
+			<li class="panel-tab <?php if ($panelInfo['priority'] > 0) echo 'important'; ?>">
 			<?php
+				$this->FontAwesome = $this->Helpers->load('DebugKit.FontAwesome');
 				$title = (empty($panelInfo['title'])) ? Inflector::humanize($panelUnderscore) : $panelInfo['title'];
-				echo $this->Toolbar->panelStart($title, $panelUnderscore);
+				if ($panelInfo['priority'] === 0) {
+					$title = $this->FontAwesome->getTitle($title);
+				}
+				echo $this->Toolbar->panelStart(($this->DebugTimerTitle && $panelName == 'timer') ? $this->DebugTimerTitle->getTitle() : $title, $panelUnderscore);
 			?>
 				<div class="panel-content" id="<?php echo $panelUnderscore ?>-tab">
 					<a href="#" class="panel-toggle ui-control ui-button">+</a>
@@ -44,7 +48,7 @@
 							<?php
 								echo $this->element($panelInfo['elementName'], $panelInfo, array(
 									'plugin' => (empty($panelInfo['plugin'])) ? null : Inflector::camelize($panelInfo['plugin'])
-								)); 
+								));
 							?>
 						</div>
 						<div class="panel-content-data panel-history" id="<?php echo $panelUnderscore; ?>-history">

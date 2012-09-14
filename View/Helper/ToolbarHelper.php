@@ -148,13 +148,13 @@ class ToolbarHelper extends AppHelper {
 	public function getQueryLogs($connection, $options = array()) {
 		$options += array('explain' => false, 'cache' => true, 'threshold' => 20);
 		$db = ConnectionManager::getDataSource($connection);
-		
+
 		if (!method_exists($db, 'getLog')) {
 			return array();
 		}
 
 		$log = $db->getLog();
-		
+
 		$out = array(
 			'queries' => array(),
 			'count' => $log['count'],

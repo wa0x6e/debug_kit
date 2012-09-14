@@ -32,6 +32,8 @@ class DebugPanel {
  */
 	public $title = null;
 
+	public $priority = 0;
+
 /**
  * Provide a custom element name for this panel.  If null, the underscored version of the class
  * name will be used.

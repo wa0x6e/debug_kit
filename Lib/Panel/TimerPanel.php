@@ -10,6 +10,8 @@ App::uses('DebugPanel', 'DebugKit.Lib');
  */
 class TimerPanel extends DebugPanel {
 
+	public $priority = 1;
+
 /**
  * startup - add in necessary helpers
  *
@@ -21,6 +23,9 @@ class TimerPanel extends DebugPanel {
 		}
 		if (!in_array('SimpleGraph', array_keys(HelperCollection::normalizeObjectArray($controller->helpers)))) {
 			$controller->helpers[] = 'DebugKit.SimpleGraph';
+		}
+		if (!in_array('DebugTimerTitle', array_keys(HelperCollection::normalizeObjectArray($controller->helpers)))) {
+			$controller->helpers[] = 'DebugKit.DebugTimerTitle';
 		}
 	}
 }
