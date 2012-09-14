@@ -662,9 +662,9 @@
 						if (panel.content.length > 0) {
 							panel.content.css('display', 'block');
 
-							var contentHeight = panel.content.find(".panel-content-data").height();
-							if (contentHeight <= window.innerHeight) {
-								panel.content.height(contentHeight+50);
+							var contentHeight = panel.content.find(".panel-content-data").height()+70;
+							if (contentHeight <= (window.innerHeight/2)) {
+								panel.content.height(contentHeight);
 							}
 
 						}
