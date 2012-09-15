@@ -110,7 +110,7 @@ class HtmlToolbarHelper extends ToolbarHelper {
  * @return void
  **/
 	public function panelStart($title, $anchor) {
-		$link = $this->Html->link($title, '#' . $anchor, array('escape' => false));
+		$link = $this->Html->link(htmlspecialchars_decode($title), '#' . $anchor, array('escape' => false));
 		return $link;
 	}
 /**

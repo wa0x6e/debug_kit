@@ -393,7 +393,7 @@ class ToolbarComponent extends Component implements CakeEventListener {
 			$vars[$panelName]['plugin'] = $panel->plugin;
 			$vars[$panelName]['title'] = $panel->title;
 			$vars[$panelName]['disableTimer'] = true;
-			$vars[$panelName]['priority'] = $panel->priority;;
+			$vars[$panelName]['priority'] = (int)$panel->priority;
 		}
 		return $vars;
 	}

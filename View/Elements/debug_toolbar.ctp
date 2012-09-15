@@ -36,10 +36,17 @@
 			<?php
 				$this->FontAwesome = $this->Helpers->load('DebugKit.FontAwesome');
 				$title = (empty($panelInfo['title'])) ? Inflector::humanize($panelUnderscore) : $panelInfo['title'];
-				if ($panelInfo['priority'] === 0) {
+				if ($panelInfo['priority'] == 0) {
 					$title = $this->FontAwesome->getTitle($title);
 				}
-				echo $this->Toolbar->panelStart(($this->DebugTimerTitle && $panelName == 'timer') ? $this->DebugTimerTitle->getTitle() : $title, $panelUnderscore);
+
+				echo $this->Toolbar->panelStart(
+					(($this->DebugTimerTitle && $panelName === 'timer')
+						? $this->DebugTimerTitle->getTitle()
+						: $title
+					),
+					$panelUnderscore
+				);
 			?>
 				<div class="panel-content" id="<?php echo $panelUnderscore ?>-tab">
 					<a href="#" class="panel-toggle ui-control ui-button">+</a>
