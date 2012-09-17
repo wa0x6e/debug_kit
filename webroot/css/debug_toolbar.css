@@ -393,6 +393,38 @@ body
 	float: right
 }
 
+#debug-kit-toolbar #environment-tab .legend
+{
+	margin-bottom: 10px;
+}
+#debug-kit-toolbar #environment-tab .legend code
+{
+	border: 1px solid #ccc;
+	padding: 3px 3px;
+	border-radius: 3px;
+}
+
+#debug-kit-toolbar #environment-tab code.string
+{
+	color: steelblue;
+}
+
+#debug-kit-toolbar #environment-tab code.integer
+{
+	color: red;
+}
+
+#debug-kit-toolbar #environment-tab code.float
+{
+	color: green;
+}
+
+
+#debug-kit-toolbar #environment-tab code.bool
+{
+	color: orange;
+}
+
 #debug-kit-toolbar [class*=icon], #debug-kit-toolbar [class^=icon]
 {
 	font-size: 18px;

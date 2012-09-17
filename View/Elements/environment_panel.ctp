@@ -37,10 +37,14 @@
 		foreach ($content['app'] as $key => $val) {
 			$cakeRows[] = array(
 				$key,
-				$val
+				'<code class="' . gettype($val) . '">' . $val . '</code>'
 			);
 		}
 		echo $this->Toolbar->table($cakeRows, $headers, array('title' => 'Application Environment Vars'));
 	} else {
 		echo "No application environment unavailable.";
 	}
+?>
+<div class="legend">
+Legend : <code>Null/Other</code> <code class="string">String</code> <code class="integer">Integer</code>
+<code class="float">Float</code> <code class="bool">Boolean</code></div>
