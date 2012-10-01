@@ -32,6 +32,20 @@ class DebugPanel {
  */
 	public $title = null;
 
+/**
+ * Panel's css files
+ *
+ * @var array
+ */
+	public $css = array();
+
+/**
+ * Panel's javascript files
+ *
+ * @var array
+*/
+	public $javascript = array();
+
 	public $priority = 0;
 
 /**

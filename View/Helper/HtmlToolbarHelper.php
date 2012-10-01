@@ -139,7 +139,10 @@ class HtmlToolbarHelper extends ToolbarHelper {
 			return;
 		}
 		$view = $this->_View;
-		$head = $this->Html->css('/debug_kit/css/debug_toolbar');
+		$head = '';
+		if (isset($view->viewVars['debugToolbarCss']) && !empty($view->viewVars['debugToolbarCss'])) {
+			$head .= $this->Html->css($view->viewVars['debugToolbarCss']);
+		}
 		if (isset($view->viewVars['debugToolbarJavascript'])) {
 			foreach ($view->viewVars['debugToolbarJavascript'] as $script) {
 				if ($script) {
